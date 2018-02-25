@@ -20,7 +20,7 @@ func downloadFile(url, target string) {
 	if err != nil {
 		resp, err := http.Get(url)
 
-		if err != nil {
+		if err != nil || resp.StatusCode != http.StatusOK {
 			fmt.Printf("Error while downloading test image: %v\n", err)
 			panic(err)
 		}

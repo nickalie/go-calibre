@@ -60,7 +60,6 @@ func (c *ConvertWrapper) MobiType(value MobiType) *ConvertWrapper {
 
 func (c *ConvertWrapper) Run() error {
 	defer c.BinWrapper.Reset()
-	c.BinWrapper.Debug()
 	c.Arg(c.source, c.target)
 
 	if c.landscape {
