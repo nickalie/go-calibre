@@ -2,7 +2,7 @@ package calibre
 
 import (
 	"github.com/nickalie/go-binwrapper"
-	"errors"
+	"github.com/pkg/errors"
 )
 
 type MobiType string
@@ -81,7 +81,7 @@ func (c *ConvertWrapper) Run() error {
 	err := c.BinWrapper.Run()
 
 	if err != nil {
-		return errors.New(string(c.CombinedOutput()) + "\n" + err.Error())
+		return errors.Wrap(err, string(c.CombinedOutput()))
 	} else {
 		return nil
 	}
