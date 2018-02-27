@@ -52,3 +52,8 @@ func TestConvertFB2(t *testing.T) {
 	err := Convert("source.zip", "target.mobi")
 	assert.Nil(t, err)
 }
+
+func TestConvertError(t *testing.T) {
+	err := Convert("source1.zip", "target2.mobi")
+	assert.NotNil(t, err)
+}
