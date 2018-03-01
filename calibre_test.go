@@ -118,3 +118,8 @@ func TestMeta(t *testing.T) {
 	assert.NotEqual(t, r.Cover, "")
 	assert.Nil(t, err)
 }
+
+func TestMetaError(t *testing.T) {
+	_, err := Meta("source3.zip")
+	assert.NotNil(t, err)
+}

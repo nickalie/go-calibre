@@ -10,6 +10,7 @@ import (
 	"os"
 	"crypto/rand"
 	"time"
+	"github.com/pkg/errors"
 )
 
 type MetaData struct {
@@ -27,7 +28,7 @@ func Meta(file string) (*MetaData, error) {
 	err := b.Run("--get-cover=" + result.Cover, file)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, string(b.CombinedOutput()))
 	}
 
 	outputs := strings.Split(string(b.CombinedOutput()), "\n")
