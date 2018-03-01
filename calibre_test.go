@@ -108,3 +108,14 @@ func TestConvertError(t *testing.T) {
 	err := Convert("source3.zip", "target2.mobi")
 	assert.NotNil(t, err)
 }
+
+func TestMeta(t *testing.T) {
+	r, err := Meta("source.epub")
+	assert.Equal(t, r.Title, "Война и мир. Том 1")
+	assert.Equal(t, r.Author, "Лев Николаевич Толстой")
+	assert.Equal(t, r.Published.Year(), 1867)
+	assert.Equal(t, int(r.Published.Month()), 3)
+	assert.Equal(t, r.Published.Day(), 14)
+	assert.NotEqual(t, r.Cover, "")
+	assert.Nil(t, err)
+}
